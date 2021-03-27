@@ -1,0 +1,45 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/splitbill.js"></script>
+</head>
+<body>
+<main>
+	<img src="img/main-bg-left.png" id="main-bg-left">
+	
+	<div id="left-section" class="left-section">
+	<div class="form-group" id="main-form">
+		<img src="img/logo.png" id="logo">
+		<h4 class="label">Total Amount</h4>
+		<input type="text" id="totalPriceInput" class="input" oninput="totalPriceKeyboardInput(this.value)">     
+		<h4 class="label">No. of People</h4>
+		<input type="text" id="peopleQtyInput" class="input" oninput="peopleQtyKeyboardInput(this.value)">      
+		<button type="button" id="updateQty" class="form-button" value="0" onclick="updateQtyTotal(this.value)">Update</button>
+		<button type="button" id="getReceipt" class="form-button" value="0" onclick="getReceipt()">Get Receipt</button>
+		<p id="reminder"></p>
+	</div>      
+
+	<!--
+	<div class="form-group">
+	  <h4 class="label">Total Amount</h4>
+	  <input type="text" id="totalPriceInput" class="input" oninput="totalPriceKeyboardInput(this.value)">     
+	  <button type="button" id="updatePrice" class="form-button" value="1" onclick="updateQtyTotal(this.value)">Update</button>
+	</div>
+
+	<div class = "form-group">
+	  <h4 class="label">No. of People</h4>
+	  <input type="text" id="peopleQtyInput" class="input" oninput="peopleQtyKeyboardInput(this.value)">      
+	  <button type="button" id="updateQty" class="form-button" value="2" onclick="updateQtyTotal(this.value)">Update</button>
+	</div>  
+    -->
+	
+  </div>
+
+  <div id="right-section">
+    <div id="listOfPeople">
+      
+    </div>
+  </div>
+  
+</main>
+</body>

@@ -1,0 +1,300 @@
+/* Font Raleway from google font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+	min-height: 100vh !important;
+	background:#fafafa;
+	margin: 0px !important;  
+	font-family: 'Inter', sans-serif;
+	display:flex;
+	justify-content:center;
+	align-items:center; 
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey; 
+	border-radius:10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #ff971d; 
+	border-radius:10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #D4654E; 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 600px) {
+	body{
+		background-image: url("../img/Bubble Background.png"),url("../img/Doodle Money.png");
+		background-repeat: no-repeat,repeat;
+		background-size:cover,40%;		
+	}
+	
+	/* Update Animasi Main template 1fr to 2fr 3fr */
+	main{
+		background:#fafafa;
+		/*border: solid medium #ee6f57; */
+		border-radius: 50px;
+		/*box-shadow: 0px 0px 50px rgba(203, 55, 55, 0.5);*/
+		box-shadow: 0px 0px 10px rgba(0, 0,0, 0.5);
+		display:grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 100%;
+		height:80vh;
+		width:80vw;
+		position:relative;
+		overflow: hidden;		
+		background-image:url("../img/main-bg-right.png");
+		background-position:110% 100%;
+		background-size:50%;
+		background-repeat:no-repeat;
+	}	
+	
+	#main-bg-left{
+		position: absolute;
+		opacity: 1;
+		width: 35%;
+		top: 32%;
+		left: 3.5%;
+	}
+	
+	#listOfPeople{
+		justify-content:flex-start;
+	}
+	/* Track */
+	::-webkit-scrollbar-track {
+		margin-top:40px;
+		margin-bottom:40px;
+	}
+		
+	.left-section{
+		background-image: url(../img/left-char.png), url(../img/building-split-bill.png);
+		background-position: 95% 100%, 5% 75%;
+		background-repeat: no-repeat;
+		background-size: 30%,35%;
+		animation: background-left-anim 1s ease-out;
+		animation-fill-mode: both;	
+	}
+	
+	@keyframes background-left-anim{
+		0%{
+			background-position: 150% -60%,-64% 75%;	
+		}
+		100%{
+			background-position: 90% -60%,4% 75%;
+		}
+	}
+
+	.form-group{
+		width:20%;
+	}
+
+}
+
+/* Smaller Device */
+@media only screen and (max-width: 600px) {
+	body{
+		background-image: url("../img/Doodle Money.png");
+		background-repeat: repeat;
+		background-size: 80%;		
+	}
+	
+	main{
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+		width:100vw;
+	}	
+	.form-group{
+		width:80%;
+	}
+
+	#listOfPeople{
+		justify-content:center;
+	}
+	
+	#main-bg-left{
+		display:none;
+	}	
+	
+	.card{
+		width:100px;
+	}	
+}
+
+
+#left-section{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	z-index:2;
+}
+
+#main-form{
+	display:flex;
+	flex-direction:column;
+}
+
+#logo{
+	width:90%;
+	margin-bottom:1rem;
+	align-self:center;
+}
+
+.label{
+  color:#575656;
+  font-weight: normal;
+  margin-bottom:0.8rem;
+  margin-top:0px;
+}
+
+.input{
+  border: solid 1px #ee6f57;
+  border-radius: 10px;
+  box-sizing: border-box; 
+  margin-bottom:1rem;
+  transition:.5s box-shadow;
+  padding:10px;
+  width:100%;
+}
+
+.input:hover{
+  box-shadow: 0px 0px 5px #ff971d;
+}
+
+.input:focus {
+  outline: none !important;
+}
+
+.form-button{
+  background:#ff971d;
+  border:0px;
+  border-radius: 20px;
+  color:#fafafa;
+  padding:10px;
+  width:100%;
+  transition:.5s background;
+  margin-bottom:.5rem;
+}
+
+.form-button:hover{
+  background:#FFAD4F;
+}
+
+.form-button:focus{
+  outline:none !important;
+}
+
+.form-button:active {
+  outline: none !important;
+  background:#E68619;
+}
+
+#reminder{
+	display:none;
+	font-size:medium;
+	color:#575656;
+	animation: reminderAppear 1s ease;
+}
+
+@keyframes reminderAppear{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}
+
+#right-section{
+	display:none;
+	overflow-y: auto;
+	overflow-x: hidden;	
+}
+
+#listOfPeople{
+	padding-top:1rem;
+	padding-bottom:1rem;
+	display:flex;
+	flex-wrap:wrap;
+	flex-grow:0;
+	align-items:flex-start;
+}
+
+.card{
+	background:#fafafa;
+	border: solid medium #ff971d;
+	border-radius: 10px;
+	box-shadow: 5px 5px 0px #ff971d;	
+	display:flex;
+	flex-direction:column;
+	margin:1rem;
+	padding: 1rem;
+	animation: cardOpening 1s ease;
+}
+
+@keyframes cardOpening{
+	0%{
+		transform: translateX(300px);
+	}
+	100%{
+		transform: translateX(0px);
+	}
+}
+
+.card .card-name{
+	color:#575656;
+	margin-bottom:.5rem;
+	background:transparent;
+	border-style: none none double none;
+	border-color: rgba(87, 86, 86, 0.5);
+}
+
+.card .card-price{
+	color:#575656;
+	margin-bottom:.5rem;
+	background:transparent;	
+	border-style: none none double none;
+	border-color: rgba(87, 86, 86, 0.5);
+}
+
+.card .card-name:focus {
+  outline: none !important;
+}
+
+.card .card-price:focus {
+  outline: none !important;
+}
+
+.card .card-button{
+  background:#575656;
+  border:0px;
+  border-radius: 20px;
+  color:#fafafa;
+  margin-bottom:.5rem;
+}
+
+.card .card-button:hover{
+	background:#FFAD4F;
+}
+
+.card .card-button:focus{
+  outline:none !important;
+}
+
+.card .card-button:active {
+  outline: none !important;
+  background:#E68619;
+}

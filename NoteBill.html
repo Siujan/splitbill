@@ -1,0 +1,131 @@
+<html>
+<head>
+	<link rel="stylesheet" href="css/noteBill.css">
+	 <script src= 
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"> 
+  </script> 
+</head>
+<body>
+	<h1 id="note">right click or hold down the image down below</h1>
+	<div id="output"></div>
+	<main id="main">
+		<img src="img/logo.png" id="logo">
+		<p id="date"></p>
+		<hr>
+		<div class="section">
+			<h2>Total Amount</h2>
+			<h2 id="total"></h2>
+		</div>
+		<div class="section">
+			<h2>Number of People</h2>
+			<h2 id="qty"></h2>
+		</div>
+		<hr>		
+	</main>
+<script type="text/javascript">
+	/* Set Comma to Price */
+	function setCommaToPrice(price){
+		let decimal = "";	
+		if(price.indexOf(".") > -1){
+			decimal = price.substring(price.indexOf(".")+1,price.length);
+			price = price.substring(0,price.indexOf("."));
+		}
+		let thousand = Math.trunc((price.length-1)/3);
+		for(let i=1;i<=thousand;i++){
+		  price = price.substring(0, price.length - (i-1) - i*3) + "," + price.substring(price.length - (i-1) - i*3,price.length);  
+		}
+		
+		if(decimal !== "" && decimal !== "00"){
+			price = price + "." + decimal;
+		}
+		return price;
+	}
+
+
+	/* get current date */
+	let currentDate = new Date();
+	let weekday = new Array(7);
+	weekday[0] = "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";	
+	let month = new Array();
+	month[0] = "January";
+	month[1] = "February";
+	month[2] = "March";
+	month[3] = "April";
+	month[4] = "May";
+	month[5] = "June";
+	month[6] = "July";
+	month[7] = "August";
+	month[8] = "September";
+	month[9] = "October";
+	month[10] = "November";
+	month[11] = "December";
+	let time = "";
+	let hour = currentDate.getHours().toString();
+	let minute = currentDate.getMinutes().toString();
+	hour.length == 1 ? time = "0" + hour : time = hour;
+	time += ":"
+	minute.length == 1 ? time += "0" + minute : time += minute;
+	let dateFormat = weekday[currentDate.getDay()] + ", " + month[currentDate.getMonth()] + " " + currentDate.getDate() + " ," 
+					+ currentDate.getFullYear() + " " + time;
+	document.getElementById("date").innerHTML = dateFormat;
+
+	document.getElementById("total").innerHTML = setCommaToPrice(localStorage.getItem('total'));
+	document.getElementById("qty").innerHTML = setCommaToPrice(localStorage.getItem('peopleQty'));
+	let nameListString = localStorage.getItem('nameList');
+	let priceListString = localStorage.getItem('priceList');
+	let nameList = [];
+	let priceList = [];
+	
+	while(nameListString.length > 0){
+		var ncomma = 0;
+		var pcomma = 0;
+		
+		nameListString.indexOf(",") > -1 ? ncomma = nameListString.indexOf(",") : ncomma = nameListString.length;	
+		nameList.push(nameListString.substring(0,ncomma));
+		nameListString = nameListString.substring(ncomma + 1,nameListString.length);
+		priceListString.indexOf(",") > -1 ? pcomma = priceListString.indexOf(",") : pcomma = priceListString.length;
+		priceList.push(priceListString.substring(0,pcomma));
+		priceListString = priceListString.substring(pcomma + 1,priceListString.length);
+	}
+	
+	for(let i = 0;i<nameList.length;i++){
+		var sec = document.createElement("div");
+		var sname = document.createElement("h2");
+		var sprice = document.createElement("h2");
+		sec.classList.add("section");
+		
+		var nameNode = document.createTextNode(nameList[i]);
+		var priceNode = document.createTextNode(priceList[i]);
+		sname.appendChild(nameNode);
+		sprice.appendChild(priceNode);
+		
+		sec.appendChild(sname);
+		sec.appendChild(sprice);
+		document.getElementById("main").appendChild(sec);
+	}
+	
+	var gratitude = document.createElement("h2");
+	gratitude.classList.add("gracias");
+	var graNode = document.createTextNode("Thanks for using SplitBill");
+	gratitude.appendChild(graNode);
+	document.getElementById("main").appendChild(gratitude);
+	
+	let gen = document.getElementById('main');
+	html2canvas(gen).then( 
+	function (canvas) { 
+		canvas.id = "myCanvas";
+		document 
+		.getElementById('output') 
+		.appendChild(canvas); 				
+	}) 
+	document.getElementById("main").style.display = "none"
+</script>
+
+</body>
+</html>
