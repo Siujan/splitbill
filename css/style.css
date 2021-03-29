@@ -24,16 +24,16 @@
 }
 
 html,body{
-	height: 100%;
-	width: 100%;
+	height: 100vh
+	width: 100vw;
 	font-family: 'Montserrat', sans-serif;	
 }
 
 body{
 	background-image: url("../img/handBill.png"),url("../img/building-split-bill.png"),url("../img/Doodle Money.png");
 	background-repeat: no-repeat,no-repeat,repeat;
-	background-size: 25%,50%,40%;
-	background-position:-10% 180%,120% 250%,center;
+	background-size: 25vw,50vw,40vw;
+	background-position:-8vw 50vh,60vw 23vh,center;
 	margin:0;
 	overflow:hidden;
 	display:flex;
@@ -44,10 +44,10 @@ body{
 
 @keyframes backgroundAnim{
 	0%{
-		background-position:-35% 180%,200% 250%,center;
+		background-position:-28vw 50vh,100vw 23vh,center;
 	}
 	100%{
-		background-position:-10% 180%,120% 250%,center;
+		background-position:-8vw 50vh,60vw 23vh,center;
 	}
 }
 
@@ -75,12 +75,13 @@ main #input-section{
 }
 
 main #input-section #logo{
-	width:50%;
-	margin-bottom:30px;
+	height:30%;
+	margin-bottom:10px;
 }
 
 main #input-section .input-form{
 	width:100%;
+	height:20%;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
@@ -91,7 +92,7 @@ main #input-section .input-form .label,.input{
 	width:75%;
 	font-family: 'Montserrat', sans-serif;
 	margin-top:0px;
-	font-size:1rem;
+	font-size:1vw;
 	color:#565757;
 }
 
@@ -116,11 +117,13 @@ main #input-section .form-button{
 	background:#ff971d;
 	border:0px;
 	border-radius:25px;
-	font-size:1rem;
+	padding:1vw;
+	font-size:1vw;
 	color:white;
 	height:3rem;
 	margin-bottom:10px;
 	width:75%;
+	height:10%;
 	transition:.2s background;
 }
 
