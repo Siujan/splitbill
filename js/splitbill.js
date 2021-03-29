@@ -212,8 +212,7 @@ function updateQtyTotal(action){
 		setTimeout(function(){       
 			reminder = getReminder();
 			document.getElementById("reminder").innerHTML = "Reminder : " + reminder;
-			document.getElementById("reminder").style.display = "block";									
-					}, openSecTime);	
+			document.getElementById("reminder").classList.add("reminder")}, openSecTime);	
 	
 	}
 }
@@ -482,8 +481,8 @@ function openSecSection(){
 	  easing:'ease'
 	});	
 
-	document.getElementsByTagName("main")[0].animate([
-	  { transform: 'translateX(35%)'}, 
+	sec.animate([
+	  { transform: 'translateX(120%)'}, 
 	  { transform: 'translateX(0%)'}  
 	],{
 		delay:openSecTime,
