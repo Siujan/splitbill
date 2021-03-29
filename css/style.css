@@ -31,6 +31,10 @@
   
 	body{
 		overflow:auto;
+		background-image: url("../img/Doodle Money.png");
+		background-repeat: repeat;
+		background-size: 40vw;
+		background-position:center;		
 	}
   
 	main{
@@ -235,7 +239,6 @@ main #input-section .form-button:active {
 	flex-wrap:wrap;
 	flex-grow:0;
 	align-items:flex-start;
-	justify-content:center;
 }
 
 .card{
