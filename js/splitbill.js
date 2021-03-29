@@ -228,15 +228,19 @@ function isEmpty(input){
 }
 
 function alertEmpty(input){
-	input.animate([
-			{ boxShadow: '0px 0px 0px #ff0000'},
-			{ boxShadow: '0px 0px 5px #ff0000',offset: 0.2}, 
-			{ boxShadow: '0px 0px 5px #ff0000',offset: 0.8}, 
-			{ boxShadow: '0px 0px 0px #ff0000'}  
-		],{
-		  duration:2000,
-		  easing:'ease'
-		});	
+	let addedClass = "emptyAlert";
+	let animTime = 1000;
+	input.classList.add(addedClass);
+	setTimeout(()=>input.classList.remove(addedClass),animTime);
+	// input.animate([
+			// { boxShadow: '0px 0px 0px #ff0000'},
+			// { boxShadow: '0px 0px 5px #ff0000',offset: 0.2}, 
+			// { boxShadow: '0px 0px 5px #ff0000',offset: 0.8}, 
+			// { boxShadow: '0px 0px 0px #ff0000'}  
+		// ],{
+		  // duration:2000,
+		  // easing:'ease'
+		// });	
 }
 
 function updateQtyTotalController(qty,total){
@@ -249,8 +253,8 @@ function updateQtyTotalController(qty,total){
 				setTimeout(function(){       
 					updateListOfPeople();}, openSecTime*2);					
 			}else{
-				document.getElementById("right-section").style.display = "block";	
-				document.getElementById("left-section").style.marginTop = "2rem";
+				document.getElementById("result-section").style.display = "block";	
+				document.getElementById("input-section").style.marginTop = "2rem";
 				updateListOfPeople();
 			}				
 		}else{
@@ -401,13 +405,13 @@ function updatePeopleNameView(id){
 	
 	card_childs[0].animate([
 		{ background: '#ffffff',
-			color: '#000000' },
+			color: '#949494' },
 		{ background: '#ffe8d6',
 			color: '#ffffff' }, 
 		{ background: '#ffffff',
-			color: '#000000'}  
+			color: '#949494'}  
 	],{
-	  duration:2000,
+	  duration:1500,
 	  easing:'ease'
 	});		
 }
@@ -468,39 +472,25 @@ function cardPriceKeyboardInput(input,id){
 }
 
 function openSecSection(){
-	let sec = document.getElementById("left-section");
-	sec.animate([
-	  { backgroundPosition: '90% -60%, 4% 75%'}, 
-	  { backgroundPosition: '150% -60%, -64% 75%'}  
+	let sec = document.getElementById("input-section");
+	document.body.animate([
+	  { backgroundPosition: '-10% 180%,120% 250%,center'}, 
+	  { backgroundPosition: '-35% 180%,200% 250%,center'}  
 	],{
 	  duration:openSecTime,
-	  fill:'both',
+	  fill:'forwards',
 	  easing:'ease'
 	});	
 
-	setTimeout(function(){ document.getElementById("left-section").classList.remove("left-section"); },openSecTime);
-
-	sec.animate([
-	  { transform: 'translateX(0px)'}, 
-	  { transform: 'translateX(-30%)'}  
+	document.getElementsByTagName("main")[0].animate([
+	  { transform: 'translateX(35%)'}, 
+	  { transform: 'translateX(0%)'}  
 	],{
 		delay:openSecTime,
 	  duration:openSecTime,
-	  easing:'ease-out'	});		
-	
-	document.getElementById("main-bg-left").animate([
-		{ opacity: 1},
-		{opacity: 0.3}
-	],{ delay:openSecTime,
-	duration:openSecTime,
-	easing:'ease',
-	fill: 'forwards'});
-	
-	
-	setTimeout(function(){  
-	document.getElementById("main-form").style.width = "50%";
-	document.getElementsByTagName("main")[0].style.gridTemplateColumns = "2fr 3fr";
-	document.getElementById("right-section").style.display = "block";}, openSecTime*2);  
+	  fill:'forwards',
+	  easing:'ease-out'});			
+	  
 	openSec = 1;
 }
 
