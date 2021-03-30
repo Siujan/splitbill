@@ -1,26 +1,30 @@
 /* Font Raleway from google font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
-/* width */
-::-webkit-scrollbar {
-	width: 15px;
-}
 
-/* Track */
-::-webkit-scrollbar-track {
-	background:#fbf3dd;
-	border-radius:10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-	background: #fdc47d; 
-	border-radius:10px;
-}
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #D4654E; 
+@media only screen and (min-width: 875px){
+	/* width */
+	::-webkit-scrollbar {
+		width: 15px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background:#fbf3dd;
+		border-radius:10px;
+	}
+	 
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #fdc47d; 
+		border-radius:10px;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+	  background: #D4654E; 
+	}	
 }
 
 html,body{
