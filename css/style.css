@@ -62,7 +62,17 @@ body{
 	
 }
 
-@media all and (max-width: 875px), (min-width: 875px) and (orientation:portrait){
+@media all and (min-width: 875px) and (orientation:portrait){
+	main{
+		display:flex;
+		justify-content:center;
+		width:100%;
+		flex-wrap:wrap;
+		overflow-y: auto;
+	}	
+}
+
+@media all and (max-width: 875px){
 
 	main{
 		display:flex;
@@ -221,7 +231,17 @@ main #input-section .form-button:active {
 		
 }
 
-@media all and (max-width: 875px), (min-width: 875px) and (orientation:portrait){
+@media all and (min-width: 875px) and (orientation:portrait){
+
+	#result-section{
+		display:none;
+		overflow-x: hidden;	
+		margin-top:2rem;
+	}
+	
+}
+
+@media all and (max-width: 875px){
 
 	#result-section{
 		display:none;
@@ -249,7 +269,13 @@ main #input-section .form-button:active {
 	}		
 }
 
-@media all and (max-width: 539px), (min-width: 875px) and (orientation:portrait){
+@media all and (min-width: 875px) and (orientation:portrait){
+	#listOfPeople{
+		justify-content:center;
+	}	
+}
+
+@media all and (max-width: 539px){
 
 	#listOfPeople{
 		justify-content:center;
@@ -268,7 +294,16 @@ main #input-section .form-button:active {
 	animation: cardOpening 1s ease;
 }
 
-@media all and (max-width: 875px), (min-width: 875px) and (orientation:portrait){
+@media all and (min-width: 875px) and (orientation:portrait){
+
+	.card{
+		flex-grow:1;
+		max-width:396px;
+	}
+	
+}
+
+@media all and (max-width: 875px){
 
 	.card{
 		flex-grow:1;
