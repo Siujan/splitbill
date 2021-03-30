@@ -396,8 +396,8 @@ function appendMainPeople(index){
 	card.appendChild(evenBtn);
 	
 	// var list = document.getElementById("listOfPeople");
-	// list.insertBefore(card, list.childNodes[list.childNodes.length-2]);	
-	document.getElementById("listOfPeople").appendChild(card);	
+	// list.insertBefore(card, list.childNodes[list.childNodes.length-2]);		
+	
 }
 
 /* Update Right Section Name of People */
@@ -488,13 +488,13 @@ function openSecSection(){
 		document.getElementById("result-section").style.display = "block";
 	},openSecTime);
 	
+	// let offsetResultwidt = document.getElementById("result-section").offsetWidth;
 	// sec.animate([
-	  // { transform: 'translateX(120%)'}, 
-	  // { transform: 'translateX(0%)'}  
+	  // { transform: 'translateX(0)'}, 
+	  // { transform: 'translateX(-' + offsetResultwidt + 'px)'}  
 	// ],{
 		// delay:openSecTime,
 	  // duration:openSecTime,
-	  // fill:'forwards',
 	  // easing:'ease-out'});			
 	  
 	openSec = 1;
