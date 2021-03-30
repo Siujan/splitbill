@@ -244,25 +244,33 @@ main #input-section .form-button:active {
 	flex-wrap:wrap;
 	flex-grow:0;
 	align-items:flex-start;
-	gap:2rem;
+}
+
+@media only screen and (min-width:875px){
+	#listOfPeople{
+		gap:2rem;
+	}		
 }
 
 @media only screen and (max-device-width: 875px) and (-webkit-device-pixel-ratio:3){
 	#listOfPeople{
 		padding:0px 1rem 1rem 1rem;
+		justify-content:space-evenly;
 	}		
 }
 
 @media only screen and (max-device-width: 539px){
 
 	#listOfPeople{
-		justify-content:center;
+		justify-content:space-evenly;
 	}
-	
+	.card{
+		margin-bottom:1rem;
+	}
 }
 
 .card{
-	background:#fafafa;
+	background:#ffffff;
 	border-radius: 10px;
 	box-shadow:0px 0px 25px 0px rgba(0,0,0,0.14);
 	display:flex;
@@ -270,13 +278,13 @@ main #input-section .form-button:active {
 	padding: 1rem;
 	box-sizing: border-box;
 	animation: cardOpening 1s ease;
+	max-width:168px;
 }
 
 @media only screen and (max-device-width: 875px){
 
 	.card{
 		flex-grow:1;
-		max-width:396px;
 	}
 	
 }
@@ -337,4 +345,33 @@ main #input-section .form-button:active {
 .card .card-button:active {
   outline: none !important;
   background:#E68619;
+}
+
+.bottomScissor{
+	transform-origin: 5% 50%;
+	animation: bottomScissor .4s 2;
+	animation-timing-function: linear;
+}
+
+@keyframes bottomScissor{
+	50%{
+		transform:rotate(-25deg);
+	}		
+	100%{
+		transform:rotate(0deg);
+	}
+}
+
+.movePart{
+	transform-origin: 15% 30%;
+	animation:rotateScissor .4s 2;
+	animation-timing-function: linear;
+}
+@keyframes rotateScissor{
+	50%{
+		transform:rotate(25deg);
+	}
+	100%{
+		transform:rotate(0deg);
+	}
 }
