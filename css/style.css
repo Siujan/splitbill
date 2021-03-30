@@ -243,7 +243,7 @@ main #input-section .form-button:active {
 	gap:2rem;
 }
 
-@media only screen and (max-width: 875px) and (-webkit-device-pixel-ratio:3){
+@media only screen and (max-width: 875px){
 	#listOfPeople{
 		padding:0px 1rem 1rem 1rem;
 	}		
