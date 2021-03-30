@@ -485,8 +485,8 @@ function openSecSection(){
 	  easing:'ease'
 	});	
 
-	document.getElementById("movePart").classList.add("movePart");
-	document.getElementById("bottomScissor").classList.add("bottomScissor");
+	document.getElementById("logo").childNodes[47].classList.add("movePart");
+	document.getElementById("logo").childNodes[25].classList.add("bottomScissor")
 
 	setTimeout(()=>{
 		document.getElementById("result-section").style.display = "block";

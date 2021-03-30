@@ -348,30 +348,52 @@ main #input-section .form-button:active {
 }
 
 .bottomScissor{
+	display:block;
 	transform-origin: 5% 50%;
-	animation: bottomScissor .4s 2;
+	animation: bottomScissor;
+	animation-duration:.4s;
+	animation-iteration-count:2;
 	animation-timing-function: linear;
 }
 
 @keyframes bottomScissor{
 	50%{
+		-webkit-transform: rotate(-25deg);
+		-moz-transform: rotate(-25deg);
+		-ms-transform: rotate(-25deg);
+		-o-transform: rotate(-25deg);
 		transform:rotate(-25deg);
 	}		
 	100%{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
 		transform:rotate(0deg);
 	}
 }
 
 .movePart{
+	display:block;
 	transform-origin: 15% 30%;
-	animation:rotateScissor .4s 2;
+	animation:rotateScissor;
+	animation-duration:.4s;
+	animation-iteration-count:2;
 	animation-timing-function: linear;
 }
 @keyframes rotateScissor{
 	50%{
+		-webkit-transform: rotate(25deg);
+		-moz-transform: rotate(25deg);
+		-ms-transform: rotate(25deg);
+		-o-transform: rotate(25deg);
 		transform:rotate(25deg);
 	}
 	100%{
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
 		transform:rotate(0deg);
 	}
 }
