@@ -208,7 +208,7 @@ function updateQtyTotal(action){
 	}else{
 		total = removeCommaFromPrice(total.value);
 		updateQtyTotalController(qty.value,total);
-		
+
 		setTimeout(function(){       
 			reminder = getReminder();
 			document.getElementById("reminder").innerHTML = "Reminder : " + reminder;
@@ -255,7 +255,9 @@ function updateQtyTotalController(qty,total){
 				document.getElementById("result-section").style.display = "block";	
 				document.getElementById("input-section").style.marginTop = "2rem";
 				updateListOfPeople();
-			}				
+			}	
+			document.getElementById("logo").childNodes[47].classList.add("movePart");
+			document.getElementById("logo").childNodes[25].classList.add("bottomScissor")			
 		}else{
 			updateListOfPeople();	
 		}
@@ -484,9 +486,6 @@ function openSecSection(){
 	  fill:'forwards',
 	  easing:'ease'
 	});	
-
-	document.getElementById("logo").childNodes[47].classList.add("movePart");
-	document.getElementById("logo").childNodes[25].classList.add("bottomScissor")
 
 	setTimeout(()=>{
 		document.getElementById("result-section").style.display = "block";
