@@ -395,7 +395,8 @@ function appendMainPeople(index){
 	card.appendChild(btn);
 	card.appendChild(evenBtn);
 	
-	// var list = document.getElementById("listOfPeople");
+	var list = document.getElementById("listOfPeople");
+	list.appendChild(card);
 	// list.insertBefore(card, list.childNodes[list.childNodes.length-2]);		
 	
 }
