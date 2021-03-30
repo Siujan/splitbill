@@ -21,10 +21,20 @@
 	</div>
 	<div id="result-section">
 		<div id="listOfPeople">
-		
+			<!-- <div class="card" id="invisible"> -->
+				<!-- <input type="text" class="card-name"> -->
+				<!-- <input type="text" class="card-price"><button  class="card-button">Update</button> -->
+				<!-- <button  class="card-button">Even</button> -->
+			<!-- </div>		 -->
 		</div>
 	</div>
   	
 </main>
 
+
+<script>
+	var height = document.getElementById("input-section").clientHeight;
+	let resultSection = document.getElementById("result-section");
+	document.getElementsByTagName("main")[0].style.maxHeight = height + "px";
+</script>
 </body>

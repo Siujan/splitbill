@@ -23,47 +23,8 @@
   background: #D4654E; 
 }
 
-/* 
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
-@media (min-width: 320px) and (max-width: 480px) {
-  
-	body{
-		overflow:auto;
-		background-image: url("../img/Doodle Money.png");
-		background-repeat: repeat;
-		background-size: 40vw;
-		background-position:center;		
-	}
-  
-	main{
-		width:100%;
-		display:flex;
-		flex-direction:column;
-	}
-  
-	main #input-section{
-		display:flex;
-		flex-direction:column;
-		align-items:center;
-		background:#ffffff;	
-		padding-top:30px;
-		padding-bottom:60px;
-		width:100%;
-	}
- 
-	#result-section{
-		display:block;
-		overflow-x: hidden;	
-		width:100%;
-	} 
-	 
-}
-
-
 html,body{
-	height: 100vh;
+	height: 100vh
 	width: 100vw;
 	font-family: 'Montserrat', sans-serif;	
 }
@@ -91,11 +52,26 @@ body{
 	}
 }
 
-main{
-	display:flex;
-	justify-content:center;
-	height:75%;
-	width:80%;
+@media only screen and (min-width: 875px){
+
+	main{
+		display:flex;
+		justify-content:center;
+		width:80%;
+	}
+	
+}
+
+@media only screen and (max-width: 875px){
+
+	main{
+		display:flex;
+		justify-content:center;
+		width:100%;
+		flex-wrap:wrap;
+		overflow-y: auto;
+	}
+	
 }
 
 /* Input Form Part */
@@ -107,45 +83,58 @@ main #input-section{
 	border-radius:25px;
 	box-shadow:0px 0px 50px 0px rgba(0,0,0,0.14);
 	padding-top:30px;
-	padding-bottom:60px;
-	width:30%;
+	min-width:396px;
 	transition:all 1s;
-	transform:translateX(120%);
+}
+
+@media only screen and (min-width: 875px){
+
+	main #input-section{
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		background:#ffffff;	
+		border-radius:25px;
+		box-shadow:0px 0px 50px 0px rgba(0,0,0,0.14);
+		padding-top:30px;
+		min-width:396px;
+		transition:all 1s;
+	}
+	
 }
 
 main #input-section #logo{
-	height:30%;
-	margin-bottom:10px;
+	height:200px;
+	margin-bottom:15px;
 }
 
 main #input-section .input-form{
 	width:100%;
-	height:20%;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
-	margin-bottom:10px;
+	margin-bottom:15px;
 }
 
 main #input-section .input-form .label,.input{
 	width:75%;
 	font-family: 'Montserrat', sans-serif;
 	margin-top:0px;
-	font-size:1vw;
+	font-size:1rem;
 	color:#565757;
 }
 
 main #input-section .input-form .label{
 	padding-left:20px;
-	margin-bottom:10px;
+	margin-bottom:5px;
 }
 
 main #input-section .input-form .input{
 	background:#ffe8d6;
 	border:0px;
 	border-radius:11px;
-	height:3rem;
 	padding-left:12px;
+	height:3rem;
 }
 
 main #input-section .input-form .input:focus{
@@ -156,13 +145,11 @@ main #input-section .form-button{
 	background:#ff971d;
 	border:0px;
 	border-radius:25px;
-	padding:1vw;
-	font-size:1vw;
+	font-size:1rem;
 	color:white;
-	height:3rem;
-	margin-bottom:10px;
+	margin-bottom:15px;
 	width:75%;
-	height:10%;
+	height:3rem;
 	transition:.2s background;
 }
 
@@ -224,32 +211,71 @@ main #input-section .form-button:active {
 
 
 /* Card */
-#result-section{
-	display:block;
-	overflow-y: auto;
-	overflow-x: hidden;	
-	width:70%;
-	padding-left:2rem;
+@media only screen and (min-width: 875px){
+
+	#result-section{
+		display:none;
+		overflow-y: auto;
+		overflow-x: hidden;	
+		padding-left:2rem;
+	}
+		
+}
+
+@media only screen and (max-width: 875px){
+
+	#result-section{
+		display:none;
+		overflow-x: hidden;	
+		margin-top:2rem;
+	}
+	
+}
+
+#invisible{
+	visibility:hidden;
 }
 
 #listOfPeople{
-	padding-top:1rem;
-	padding-bottom:1rem;
 	display:flex;
 	flex-wrap:wrap;
 	flex-grow:0;
 	align-items:flex-start;
+	gap:2rem;
+}
+
+@media only screen and (max-width: 875px){
+	#listOfPeople{
+		padding:0px 1rem 1rem 1rem;
+	}		
+}
+
+@media only screen and (max-width: 539px){
+
+	#listOfPeople{
+		justify-content:center;
+	}
+	
 }
 
 .card{
 	background:#fafafa;
 	border-radius: 10px;
-	box-shadow:0px 0px 50px 0px rgba(0,0,0,0.14);
+	box-shadow:0px 0px 25px 0px rgba(0,0,0,0.14);
 	display:flex;
 	flex-direction:column;
-	margin:0px 1rem 1rem 1rem;
 	padding: 1rem;
+	box-sizing: border-box;
 	animation: cardOpening 1s ease;
+}
+
+@media only screen and (max-width: 875px){
+
+	.card{
+		flex-grow:1;
+		max-width:396px;
+	}
+	
 }
 
 @keyframes cardOpening{

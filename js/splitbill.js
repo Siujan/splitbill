@@ -394,6 +394,9 @@ function appendMainPeople(index){
 	card.appendChild(price);
 	card.appendChild(btn);
 	card.appendChild(evenBtn);
+	
+	// var list = document.getElementById("listOfPeople");
+	// list.insertBefore(card, list.childNodes[list.childNodes.length-2]);	
 	document.getElementById("listOfPeople").appendChild(card);	
 }
 
@@ -481,14 +484,18 @@ function openSecSection(){
 	  easing:'ease'
 	});	
 
-	sec.animate([
-	  { transform: 'translateX(120%)'}, 
-	  { transform: 'translateX(0%)'}  
-	],{
-		delay:openSecTime,
-	  duration:openSecTime,
-	  fill:'forwards',
-	  easing:'ease-out'});			
+	setTimeout(()=>{
+		document.getElementById("result-section").style.display = "block";
+	},openSecTime);
+	
+	// sec.animate([
+	  // { transform: 'translateX(120%)'}, 
+	  // { transform: 'translateX(0%)'}  
+	// ],{
+		// delay:openSecTime,
+	  // duration:openSecTime,
+	  // fill:'forwards',
+	  // easing:'ease-out'});			
 	  
 	openSec = 1;
 }
