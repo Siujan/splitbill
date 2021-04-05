@@ -90,7 +90,7 @@ function evenDistributeTotal(input){
 	let fixedList = getListByType("fixed");
 	for(let i = 0;i < fixedList.length;i++){
 		let ratioPrice = (fixedList[i].price/totalAmount) * input;
-		ratioPrice = ratioPrice.roundDown(ratioPrice,2);
+		ratioPrice = roundDown(ratioPrice,2);
 		listOfPeople.find(x => x.id === fixedList[i].id).price = ratioPrice;
 		evenAmount -= ratioPrice;
 	}
@@ -163,21 +163,33 @@ function totalPriceKeyboardInput(input){
 	let totalPriceInput = document.getElementById("totalPriceInput");
 	let totalPriceValue = "";
 	input = removeCommaFromPrice(input);
-	if(input.match(/^[0-9]+$/) === null){
-		if(input.length < 2){
-			totalPriceValue = "";
-		}else{
-			totalPriceValue = originalInput.replace(input.match(/\D/g),'');
-		}		
-	}else if(input.charAt(0) == "0"){
-		let output = input.substring(1, input.length);
-		output = setCommaToPrice(output);
-		totalPriceValue = output;
-	}else{
-		totalPriceValue = setCommaToPrice(input);
-	}
 	
-	totalPriceInput.value = totalPriceValue;
+	let newTotal = input.split('').reduce(function(str,curVal){
+		if(curVal.match(/^[0-9]+$/) != null){
+			str.push(curVal);
+		}
+		return str;
+	},[]);
+	(newTotal[0] == 0) ? newTotal = newTotal.slice(1,) : newTotal = newTotal
+	totalPriceInput.value = setCommaToPrice(newTotal.join(''));
+	
+	
+	//old way
+	// if(input.match(/^[0-9]+$/) === null){
+		// if(input.length < 2){
+			// totalPriceValue = "";
+		// }else{
+			// totalPriceValue = originalInput.replace(input.match(/\D/g),'');
+		// }		
+	// }else if(input.charAt(0) == "0"){
+		// let output = input.substring(1, input.length);
+		// output = setCommaToPrice(output);
+		// totalPriceValue = output;
+	// }else{
+		// totalPriceValue = setCommaToPrice(input);
+	// }
+	
+	// totalPriceInput.value = totalPriceValue;
 }
 
 /* Keyboard Input for People quantity */
@@ -369,6 +381,8 @@ function appendMainPeople(index){
 	var price = document.createElement("input");
 	price.setAttribute("type", "text");
 	price.setAttribute("oninput","cardPriceKeyboardInput(this.value,this.id)");
+	price.setAttribute("onclick","cardPriceKeyboardClick(this.value,this.id)");
+	price.setAttribute("onfocusout","cardPriceKeyboardOut(this.value,this.id)");
 	price.id = "cardPrice_" + index;
 	var btn = document.createElement("button");	
 	btn.id = "cardButton_" + index;
@@ -448,6 +462,18 @@ function evenUpdateButton(id){
 	updatePeoplesPrice();
 }
 
+function cardPriceKeyboardClick(value,id){
+	if(value.length == 1 && value[0] == "0"){
+		document.getElementById(id).value = "";
+	}
+}
+
+function cardPriceKeyboardOut(value,id){
+	if(value.length == 0){
+		document.getElementById(id).value = "0";
+	}
+}
+
 /* Card Keyboard Restriction */
 function cardPriceKeyboardInput(input,id){
 	let cardPriceInput = document.getElementById(id);
@@ -460,20 +486,40 @@ function cardPriceKeyboardInput(input,id){
 	let cardPriceValue = "";
 	input = removeCommaFromPrice(input);
 	
-	if(input.match(/^[0-9]+$/) === null){
-		console.log(input);
-		if(input.length < 2){
-			cardPriceValue = "";	
-		}else{
-			cardPriceValue = originalInput.replace(input.match(/\D/g),'');
-		}		
-	}else if(input == "00"){
-		cardPriceValue = "0";
-	}else{
-		(parseInt(input, 10) >= parseInt(possibleEvenAmount, 10) ) ? cardPriceValue = setCommaToPrice(possibleEvenAmount.toString()) : cardPriceValue = setCommaToPrice(input);
-	}
-	cardPriceInput.value = cardPriceValue;	
-
+	
+	let newPrice = input.split('').reduce(function(str,curVal){
+		if(curVal.match(/^[0-9]+$/) != null){
+			str.push(curVal);
+		}
+		return str;
+	},[]);
+	
+	(newPrice[0] == 0) ? newPrice = newPrice.slice(1,) : newPrice = newPrice;
+	
+	console.log(parseInt(newPrice.join(''), 10) >= parseInt(possibleEvenAmount, 10));
+	
+	(parseInt(newPrice.join(''), 10) >= parseInt(possibleEvenAmount, 10) ) ? 
+		cardPriceValue = setCommaToPrice(possibleEvenAmount.toString()) : 
+			cardPriceValue = setCommaToPrice(newPrice.join(''));
+	
+	console.log(cardPriceValue);
+	cardPriceInput.value = cardPriceValue;
+	// cardPriceInput.value = setCommaToPrice(newPrice.join(''));	
+	
+	// if(input.match(/^[0-9]+$/) === null){
+		// if(input.length < 2){
+			// cardPriceValue = "";	
+		// }else{
+			// cardPriceValue = originalInput.replace(input.match(/\D/g),'');
+		// }		
+	// }else if(input == "00"){
+		// cardPriceValue = "0";
+	// }else{
+		// (parseInt(input, 10) >= parseInt(possibleEvenAmount, 10) ) ? cardPriceValue = setCommaToPrice(possibleEvenAmount.toString()) : cardPriceValue = setCommaToPrice(input);
+	// }
+	// console.log(cardPriceValue);
+	// cardPriceInput.value = cardPriceValue;	
+	
 }
 
 function openSecSection(){
